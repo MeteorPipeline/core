@@ -3,7 +3,7 @@ Package.describe({
   version: '0.0.1',
   summary: 'Build Pipeline',
   git: 'https://github.com/MeteorPipeline/core',
-  documentation: 'README.md'
+  documentation: null
 });
 
 Package.onUse(function(api) {
