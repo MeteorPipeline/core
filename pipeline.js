@@ -35,8 +35,8 @@ Pipeline = class PipelineClass {
       inputFiles.push(new InputPipelineFile(file));
     }
     for(let step of this.pipeline) {
-      if (step.processFilesForTarget) {
-        step.processFilesForTarget(inputFiles);
+      if (step.compiler.processFilesForTarget) {
+        step.compiler.processFilesForTarget(inputFiles);
       }
     }
   }
@@ -89,7 +89,8 @@ Pipeline = class PipelineClass {
       return step.getAbsoluteImportPath(inputFile);
     }
   }
-  push(Compiler) {
-    this.pipeline.push(new Compiler());
+  add(weight, compiler) {
+    this.pipeline.push({weight: weight, compiler: compiler});
+    this.pipeline = _.sortBy(this.pipeline, 'weight');
   }
 };
